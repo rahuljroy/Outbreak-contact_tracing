@@ -1,0 +1,22 @@
+You can perform the following assignment using eany paradigm (OpenMP, MPI or CUDA)..
+Two problems are given below based on  a set of graphs. The physical meaning of the graphs are explained in the problems. For the assignment, you can do any of the two problems or any other problem related to outbreak that can make use of these graphs with the same physical meaning.
+
+Problem 1:
+A series of 20 graphs, named graph-1, graph-2,....graph-20 are contained in the folder YYY.
+These graphs have the same number of vertices. The vertices represent people and the edges represent proximity information. That is an edge between two vertices i and j represent that they have been at close distance with  each other.
+Each graph cornveys the proximity information for the day. Graph-1 for Day, Graph-2 for Day 2 etc.
+At the end of Day 10, the health department finds the following people (vertices) to have tested positive for virus - 8, 83, 676, 10007, 500797, 988878, 5502,030, 7829387, 3729182, 8129352.
+They decide to do the contcat tracing and quarantine all those who have come in contact with these people in the past 10 days.
+Besides, at the end of every day, half of the people (genereate this half randomly) who are quarantined test positive. Hence people who have come in contact with these quarantined and tested positive people in the previous days are also contact traced and quanrantined.
+Simulate this setting and output the following: total number of positive cases, total number of quarantined people, the start day (Day x)  and the end day (Day y) of the quarantine of the quarantined people.
+Adopt adequate parallelization to speed up this computations. Report the time taken. Write a report describing the methodology, the times for different number of processors/threads, and observations.
+
+(or)
+
+Problem 2:
+A weighted graph, named YYY, is contained in the folder YYY. The vertex weights represent the criticality of the prson, and the edge weight represents the likelihood of a vertex affecting the other.
+Find the top 100 eigenvector centrality scores of the vertices. Look up in the web on eigen vector centrality. Adopt your favorite eigen vector calculation numerical method and parallelize it.
+
+(or)
+
+Any other problem that is relevant to the above discussion and carries the same meanings of the graphs.
