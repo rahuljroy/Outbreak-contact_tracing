@@ -5,14 +5,12 @@
 #include <vector>
 #include <string>
 #include <map>
-#include <bits/stdc++.h> 
-
 
 using namespace std;
 
 struct graph{
     int Day;
-    vector< vector<long int> > graph_for_the_day;
+    vector<vector<long int>> graph_for_the_day;
 };
 
 long int get_no_lines(char* filename){
@@ -37,7 +35,7 @@ long int get_no_lines(char* filename){
 }
 
 
-void build_graph(char* filename, long int no_vertices, vector< vector<long int> >& graph){
+void build_graph(char* filename, long int no_vertices, vector<vector<long int>>& graph){
     long int u, node_weight;
     // vector<vector<long int>> graph;
     string data;
@@ -57,7 +55,6 @@ void build_graph(char* filename, long int no_vertices, vector< vector<long int> 
     while(myfile>>u>>node_weight){
         graph[u].push_back(node_weight);
     }
-    // cout<<"Graph created"<<endl;
 
 }
 int main(int argc, char** argv){
@@ -68,14 +65,12 @@ int main(int argc, char** argv){
     struct graph day_graphs[10];
 
     // vector<vector<long int>> graph1, graph2, graph3, graph4, graph5, graph6, graph7, graph8, graph9, graph10;
-    vector< vector<long int> > weight, node_weights;
+    vector<vector<long int>> weight, node_weights;
     long int no_vertices = 0;
     string data, file_number, txt, filename;
-    char* file;
 
-
-    file = "../../../../scratch/graph-inputs_PP/node_weights.txt";
-    no_vertices = get_no_lines(file);
+    filename = "../../../../scratch/graph-inputs_PP/node_weights.txt";
+    no_vertices = get_no_lines(filename);
     cout<<"The number of vertices are : "<<no_vertices<<endl;
 
     // graph1.resize(no_vertices), graph2.resize(no_vertices), graph3.resize(no_vertices), graph4.resize(no_vertices), graph5.resize(no_vertices);
@@ -84,8 +79,8 @@ int main(int argc, char** argv){
     weight.resize(no_vertices);
     node_weights.resize(no_vertices);
 
-    file = "../../../../scratch/graph-inputs_PP/node_weights.txt";
-    build_graph(file, no_vertices, node_weights);
+    filename = "../../../../scratch/graph-inputs_PP/node_weights.txt";
+    build_graph(filename, no_vertices, node_weights);
     filename = "../../../../scratch/graph-inputs_PP/wiki-";
     txt = ".txt";
 
@@ -93,25 +88,19 @@ int main(int argc, char** argv){
     for (i=1; i<=10; i++){
         day_graphs[i-1].Day = i;
         day_graphs[i-1].graph_for_the_day.resize(no_vertices);
-        // cout<<"Reached after declaration"<<endl;
+
         graph_number = i;
         file_number = to_string(graph_number);
 
-        filename.append(file_number);
-        filename.append(txt);
-        // cout<<"Filename declared"<<endl;
-        // strcpy(file, filename.c_str());
-        file = &filename[0];
-        // cout<<"Filename Created"<<endl;
-        build_graph(file, no_vertices, day_graphs[i-1].graph_for_the_day);
-        cout<<"Graph "<<i<<" built"<<endl;
+        filename = filename+file_number+txt;
+
+
     }
 
-    // filename = "../../../../scratch/graph-inputs_PP/wiki-6.txt";
-
-    for (i=0; i<no_vertices; i++){
-        for (j=0; j<day_graphs[6].graph_for_the_day[i].size(); j++){
-            cout<<"the node weight of "<<i<<" is "<<day_graphs[6].graph_for_the_day[i][j];
-        }
-    }
+    filename = "../../../../scratch/graph-inputs_PP/node_weights.txt"
+    // for (i=0; i<no_vertices; i++){
+    //     for (j=0; j<node_weights[i].size(); j++){
+    //         cout<<"the node weight of "<<i<<" is "<<node_weights[i][j];
+    //     }
+    // }
 }

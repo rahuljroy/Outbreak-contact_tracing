@@ -57,7 +57,7 @@ void build_graph(char* filename, long int no_vertices, vector< vector<long int> 
     while(myfile>>u>>node_weight){
         graph[u].push_back(node_weight);
     }
-    // cout<<"Graph created"<<endl;
+    cout<<"Graph created"<<endl;
 
 }
 int main(int argc, char** argv){
@@ -93,7 +93,7 @@ int main(int argc, char** argv){
     for (i=1; i<=10; i++){
         day_graphs[i-1].Day = i;
         day_graphs[i-1].graph_for_the_day.resize(no_vertices);
-        // cout<<"Reached after declaration"<<endl;
+        cout<<"Reached after declaration"<<endl;
         graph_number = i;
         file_number = to_string(graph_number);
 
