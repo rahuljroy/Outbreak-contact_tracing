@@ -63,20 +63,24 @@ void build_graph(char* filename, long int no_vertices, vector< vector<long int> 
 
 int main(int argc, char** argv){
     
-    int i, j, k, count=0;
+    int i, j;
     long int u, v, graph_number;
 
     struct graph day_graphs[10];
 
+    // vector<vector<long int>> graph1, graph2, graph3, graph4, graph5, graph6, graph7, graph8, graph9, graph10;
     vector< vector<long int> > weight, node_weights;
     long int no_vertices = 0;
-    string data, file_number, txt, filename, filename1;
+    string data, file_number, txt, filename;
     char* file;
 
 
     file = "../../../../scratch/graph-inputs_PP/node_weights.txt";
     no_vertices = get_no_lines(file);
     cout<<"The number of vertices are : "<<no_vertices<<endl;
+
+    // graph1.resize(no_vertices), graph2.resize(no_vertices), graph3.resize(no_vertices), graph4.resize(no_vertices), graph5.resize(no_vertices);
+    // graph6.resize(no_vertices), graph7.resize(no_vertices), graph8.resize(no_vertices), graph9.resize(no_vertices), graph10.resize(no_vertices);
 
     weight.resize(no_vertices);
     node_weights.resize(no_vertices);
@@ -90,33 +94,25 @@ int main(int argc, char** argv){
     for (i=1; i<=10; i++){
         day_graphs[i-1].Day = i;
         day_graphs[i-1].graph_for_the_day.resize(no_vertices);
-
+        // cout<<"Reached after declaration"<<endl;
         graph_number = i;
         file_number = to_string(graph_number);
 
-        // filename.append(file_number);
-        // filename.append(txt);
-        filename1 = filename+file_number+txt;
-
-        file = &filename1[0];
-        cout<<file<<endl;
+        filename.append(file_number);
+        filename.append(txt);
+        // cout<<"Filename declared"<<endl;
+        // strcpy(file, filename.c_str());
+        file = &filename[0];
+        // cout<<"Filename Created"<<endl;
         build_graph(file, no_vertices, day_graphs[i-1].graph_for_the_day);
         cout<<"Graph "<<i<<" built"<<endl;
     }
 
     // filename = "../../../../scratch/graph-inputs_PP/wiki-6.txt";
 
-    for (k=0; k<10; k++){
-        count = 0;
-        for (i=0; i<no_vertices; i++){
-            // for (j=0; j<day_graphs[k].graph_for_the_day[i].size(); j++){
-            if (day_graphs[k].graph_for_the_day[i].size() != 0){
-                // cout<<"the number of neighbours of  "<<i<<" is "<<day_graphs[k].graph_for_the_day[i].size();
-                    count++;
-            // }
-            }
+    for (i=0; i<no_vertices; i++){
+        for (j=0; j<day_graphs[6].graph_for_the_day[i].size(); j++){
+            cout<<"the node weight of "<<i<<" is "<<day_graphs[6].graph_for_the_day[i][j];
         }
-        cout<<"The final non zero count is "<<count<<" for graph "<<k<<endl;
-
     }
 }

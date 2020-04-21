@@ -70,7 +70,7 @@ int main(int argc, char** argv){
 
     vector< vector<long int> > weight, node_weights;
     long int no_vertices = 0;
-    string data, file_number, txt, filename, filename1;
+    string data, file_number, txt, filename;
     char* file;
 
 
@@ -94,12 +94,11 @@ int main(int argc, char** argv){
         graph_number = i;
         file_number = to_string(graph_number);
 
-        // filename.append(file_number);
-        // filename.append(txt);
-        filename1 = filename+file_number+txt;
+        filename.append(file_number);
+        filename.append(txt);
 
-        file = &filename1[0];
-        cout<<file<<endl;
+        file = &filename[0];
+
         build_graph(file, no_vertices, day_graphs[i-1].graph_for_the_day);
         cout<<"Graph "<<i<<" built"<<endl;
     }
@@ -107,7 +106,6 @@ int main(int argc, char** argv){
     // filename = "../../../../scratch/graph-inputs_PP/wiki-6.txt";
 
     for (k=0; k<10; k++){
-        count = 0;
         for (i=0; i<no_vertices; i++){
             // for (j=0; j<day_graphs[k].graph_for_the_day[i].size(); j++){
             if (day_graphs[k].graph_for_the_day[i].size() != 0){
@@ -116,7 +114,6 @@ int main(int argc, char** argv){
             // }
             }
         }
-        cout<<"The final non zero count is "<<count<<" for graph "<<k<<endl;
-
     }
+    cout<<"The final non zero count is "<<count<<endl;
 }

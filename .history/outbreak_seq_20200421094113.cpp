@@ -70,7 +70,7 @@ int main(int argc, char** argv){
 
     vector< vector<long int> > weight, node_weights;
     long int no_vertices = 0;
-    string data, file_number, txt, filename, filename1;
+    string data, file_number, txt, filename;
     char* file;
 
 
@@ -94,11 +94,10 @@ int main(int argc, char** argv){
         graph_number = i;
         file_number = to_string(graph_number);
 
-        // filename.append(file_number);
-        // filename.append(txt);
-        filename1 = filename+file_number+txt;
+        filename.append(file_number);
+        filename.append(txt);
 
-        file = &filename1[0];
+        file = &filename[0];
         cout<<file<<endl;
         build_graph(file, no_vertices, day_graphs[i-1].graph_for_the_day);
         cout<<"Graph "<<i<<" built"<<endl;
