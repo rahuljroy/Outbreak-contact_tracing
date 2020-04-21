@@ -117,17 +117,16 @@ int main(int argc, char** argv){
     for (k=0; k<10; k++){
         count = 0;
         for (i=0; i<no_vertices; i++){
-            no_of_neighbours[i].push_back(day_graphs[k].graph_for_the_day[i].size());
+            // for (j=0; j<day_graphs[k].graph_for_the_day[i].size(); j++){
+            if (day_graphs[k].graph_for_the_day[i].size() != 0){
+                // cout<<"the number of neighbours of  "<<i<<" is "<<day_graphs[k].graph_for_the_day[i].size();
+                    count++;
+            // }
+            }
         }
-    }
         cout<<"The final non zero count is "<<count<<" for graph "<<k<<endl;
-
-    for (i=0; i<no_vertices; i++){
-        for (j=0; j<no_of_neighbours[i].size(); j++){
-            cout<<no_of_neighbours[i][j]<<"  ";
-        }
-        cout<<endl;
     }
+
     vector<long int> infected;
     filename = "infected.txt";
 

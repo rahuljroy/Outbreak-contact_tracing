@@ -121,13 +121,8 @@ int main(int argc, char** argv){
         }
     }
         cout<<"The final non zero count is "<<count<<" for graph "<<k<<endl;
+    // }
 
-    for (i=0; i<no_vertices; i++){
-        for (j=0; j<no_of_neighbours[i].size(); j++){
-            cout<<no_of_neighbours[i][j]<<"  ";
-        }
-        cout<<endl;
-    }
     vector<long int> infected;
     filename = "infected.txt";
 

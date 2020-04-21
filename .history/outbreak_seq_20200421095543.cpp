@@ -57,7 +57,6 @@ void build_graph(char* filename, long int no_vertices, vector< vector<long int> 
     while(myfile>>u>>node_weight){
         graph[u].push_back(node_weight);
     }
-    myfile.close();
     // cout<<"Graph created"<<endl;
 }
 
@@ -75,7 +74,7 @@ int main(int argc, char** argv){
 
     struct graph day_graphs[10];
 
-    vector< vector<long int> > weight, node_weights, no_of_neighbours;
+    vector< vector<long int> > weight, node_weights;
     long int no_vertices = 0;
     string data, file_number, txt, filename, filename1;
     char* file;
@@ -85,7 +84,6 @@ int main(int argc, char** argv){
     no_vertices = get_no_lines(file);
     cout<<"The number of vertices are : "<<no_vertices<<endl;
 
-    no_of_neighbours.resize(no_vertices);
     weight.resize(no_vertices);
     node_weights.resize(no_vertices);
 
@@ -117,18 +115,14 @@ int main(int argc, char** argv){
     for (k=0; k<10; k++){
         count = 0;
         for (i=0; i<no_vertices; i++){
-            no_of_neighbours[i].push_back(day_graphs[k].graph_for_the_day[i].size());
+            // for (j=0; j<day_graphs[k].graph_for_the_day[i].size(); j++){
+            if (day_graphs[k].graph_for_the_day[i].size() != 0){
+                // cout<<"the number of neighbours of  "<<i<<" is "<<day_graphs[k].graph_for_the_day[i].size();
+                    count++;
+            // }
+            }
         }
-    }
         cout<<"The final non zero count is "<<count<<" for graph "<<k<<endl;
 
-    for (i=0; i<no_vertices; i++){
-        for (j=0; j<no_of_neighbours[i].size(); j++){
-            cout<<no_of_neighbours[i][j]<<"  ";
-        }
-        cout<<endl;
     }
-    vector<long int> infected;
-    filename = "infected.txt";
-
 }
