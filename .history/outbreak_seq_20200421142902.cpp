@@ -15,7 +15,6 @@ struct graph{
     vector< vector<long int> > graph_for_the_day;
 };
 
-
 long int get_no_lines(char* filename){
 
     long int no_vertices = 0;
