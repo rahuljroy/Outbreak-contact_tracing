@@ -88,7 +88,7 @@ void build_graph(char* filename, long int no_vertices, vector< vector<long int> 
 }
 
 
-vector<long int> get_neighbours(vector< vector<long int> >& graph, long int u){
+vector<long int> get_neighbours(vector< vector<long int> >& graph, int u){
 
     return graph[u];
 }
@@ -101,7 +101,7 @@ int main(int argc, char** argv){
 
     struct graph day_graphs[10];
 
-    vector< vector<long int> > weight, node_weights, no_of_neighbours, infected, neighbours;
+    vector< vector<long int> > weight, node_weights, no_of_neighbours, infected;
     long int no_vertices = 0, no_infected = 0;
     string data, file_number, txt, filename, filename1;
     char* file;
@@ -141,21 +141,20 @@ int main(int argc, char** argv){
 
     // filename = "../../../../scratch/graph-inputs_PP/wiki-6.txt";
 
-    for (k=0; k<10; k++){
-        count = 0;
-        for (i=0; i<no_vertices; i++){
-            no_of_neighbours[i].push_back(day_graphs[k].graph_for_the_day[i].size());
-        }
-    }
+    // for (k=0; k<10; k++){
+    //     count = 0;
+    //     for (i=0; i<no_vertices; i++){
+    //         no_of_neighbours[i].push_back(day_graphs[k].graph_for_the_day[i].size());
+    //     }
+    // }
         // cout<<"The final non zero count is "<<count<<" for graph "<<k<<endl;
 
-    // for (i=0; i<no_vertices; i++){
-    //     for (j=0; j<no_of_neighbours[i].size(); j++){
-    //         cout<<no_of_neighbours[i][j]<<"  ";
-    //     }
-    //     cout<<endl;
-    // }
-
+    for (i=0; i<no_vertices; i++){
+        for (j=0; j<no_of_neighbours[i].size(); j++){
+            cout<<no_of_neighbours[i][j]<<"  ";
+        }
+        cout<<endl;
+    }
     filename = "infected.txt";
     file = &filename[0];
 
@@ -170,13 +169,4 @@ int main(int argc, char** argv){
         }
     }
 
-    neighbours.resize(no_vertices);
-    for (i=0; i<infected.size(); i++){
-        for (j=0; j<infected[i].size(); j++){
-            neighbours[infected[i][j]] = get_neighbours(day_graphs[0].graph_for_the_day, infected[i][j]);
-            for (k=0; k<neighbours[infected[i][j]].size(); k++){
-                cout<<"neighbour of the infected guy: "<<infected[i][j]<<" is: "<<neighbours[infected[i][j]][k];
-            }
-        }
-    }
 }

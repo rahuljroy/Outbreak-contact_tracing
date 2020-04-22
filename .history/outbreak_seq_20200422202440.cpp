@@ -175,7 +175,7 @@ int main(int argc, char** argv){
         for (j=0; j<infected[i].size(); j++){
             neighbours[infected[i][j]] = get_neighbours(day_graphs[0].graph_for_the_day, infected[i][j]);
             for (k=0; k<neighbours[infected[i][j]].size(); k++){
-                cout<<"neighbour of the infected guy: "<<infected[i][j]<<" is: "<<neighbours[infected[i][j]][k];
+                cout<<"neighbour of the infected guy: "<<infected[i][j]<<" is: "<<
             }
         }
     }

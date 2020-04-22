@@ -88,7 +88,7 @@ void build_graph(char* filename, long int no_vertices, vector< vector<long int> 
 }
 
 
-vector<long int> get_neighbours(vector< vector<long int> >& graph, long int u){
+vector<long int> get_neighbours(vector< vector<long int> >& graph, int u){
 
     return graph[u];
 }
@@ -170,13 +170,10 @@ int main(int argc, char** argv){
         }
     }
 
-    neighbours.resize(no_vertices);
+
     for (i=0; i<infected.size(); i++){
         for (j=0; j<infected[i].size(); j++){
-            neighbours[infected[i][j]] = get_neighbours(day_graphs[0].graph_for_the_day, infected[i][j]);
-            for (k=0; k<neighbours[infected[i][j]].size(); k++){
-                cout<<"neighbour of the infected guy: "<<infected[i][j]<<" is: "<<neighbours[infected[i][j]][k];
-            }
+
         }
     }
 }
