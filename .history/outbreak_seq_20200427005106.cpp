@@ -7,9 +7,6 @@
 #include <map>
 #include <bits/stdc++.h> 
 #include <stdlib.h>
-#include <time.h>
-#include <sys/time.h>
-
 
 
 using namespace std;
@@ -82,9 +79,6 @@ int main(){
 
     struct graph day_graphs;
 
-    struct timespec start1, finish, graph_start, graph_end;
-    double time_seq = 0, time_graph=0;
-
     vector< vector<long int> > weight, node_weights, no_of_neighbours, neighbours;
     vector<long int> infected, current_infected;
     vector<int> infected_or_not, prev_infected, processed, quarantined, infected_day, quarantined_day;
@@ -115,8 +109,6 @@ int main(){
     build_graph(file, no_vertices, node_weights);
     filename = "../../../../scratch/graph-inputs_PP/wiki-";
     txt = ".txt";
-    
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &graph_start);
 
 
     for (i=1; i<=10; i++){
@@ -131,10 +123,6 @@ int main(){
         build_graph(file, no_vertices, day_graphs.graph_for_the_day);
     }
 
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &graph_end);
-    long seconds = graph_end.tv_sec - graph_start.tv_sec; 
-    long ns = graph_end.tv_nsec - graph_start.tv_nsec;
-    time_graph = (double)seconds + (double)ns/(double)1000000000;
 
     filename = "infected.txt";
     file = &filename[0];
@@ -151,13 +139,11 @@ int main(){
         quarantined_day[infected[i]] = 1;
     }
     
-    // cout<<"the number of infected people on day 1 is "<<infected.size()<<endl;
+    cout<<"the number of infected people on day 1 is "<<infected.size()<<endl;
     neighbours.resize(no_vertices);
     
     i=0;
     count = infected.size();
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &start1);
-
     while(count!=0){
         count = infected.size();
         for (j=0; j<count; j++){
@@ -166,7 +152,7 @@ int main(){
 
             for(k=0; k<neighbours[infected[j]].size(); k++){
                 num = (double)((rand()%neighbours[infected[j]].size())) / neighbours[infected[j]].size();
-                if(infected_or_not[neighbours[infected[j]][k]]==0){
+                if(quarantined[neighbours[infected[j]][k]]==0){
                     if (num<0.5){
                         infected_or_not[neighbours[infected[j]][k]] = 0;
                         quarantined[neighbours[infected[j]][k]] = 1;
@@ -184,38 +170,30 @@ int main(){
             }
         }
 
-        // cout<<"The number of infected people on day "<<i+2<<" is "<<current_infected.size()<<endl;
+        cout<<"new size of infected people on day "<<i+2<<" is "<<current_infected.size()<<endl;
         i++;
         infected = current_infected;
         current_infected.clear();
         count = infected.size();
     }
-    clock_gettime(CLOCK_PROCESS_CPUTIME_ID, &finish); 
-    seconds = finish.tv_sec - start1.tv_sec; 
-    ns = finish.tv_nsec - start1.tv_nsec;
-    time_seq = (double)seconds + (double)ns/(double)1000000000;
-    printf("\nGraph read time for sequential code is,  %e", time_graph);
-    printf("\nTime taken for sequential code for outbreak, excluding graph time,  is, %e", time_seq);
-    printf("\nTime taken for sequential code for outbreak, inckuding graph time,  is, %e\n", time_seq+time_graph);
-
     
-    // cout<<endl<<"Person_ID\tInfected\tQuarantined\tQuarantin_Start\tQuarantine_end"<<endl;
+    cout<<endl<<"Person_ID\tInfected\tQuarantined\tQuarantin_Start\tQuarantine_end"<<endl;
     for (i=0; i<no_vertices; i++){
         if (infected_or_not[i] ==1){
-            // cout<<i<<"\t"<<infected_or_not[i]<<"\t"<<quarantined[i]<<"\t"<<quarantined_day[i]<<"\t"<<quarantined_day[i]+20<<endl;
+            cout<<i<<"\t"<<infected_or_not[i]<<"\t"<<quarantined[i]<<"\t"<<quarantined_day[i]<<"\t"<<quarantined_day[i]+20<<endl;
             infected_count++;
             quarantined_count++;
         }
         else if(infected_or_not[i]==0 && quarantined[i]==1){
-            // cout<<i<<"\t"<<infected_or_not[i]<<"\t"<<quarantined[i]<<"\t"<<quarantined_day[i]<<"\t"<<quarantined_day[i]+20<<endl;
+            cout<<i<<"\t"<<infected_or_not[i]<<"\t"<<quarantined[i]<<"\t"<<quarantined_day[i]<<"\t"<<quarantined_day[i]+20<<endl;
             quarantined_count++;
         }
         else{
-            // cout<<i<<"\t"<<infected_or_not[i]<<"\t"<<quarantined[i]<<"\t"<<quarantined_day[i]<<"\t0"<<endl;
+            cout<<i<<"\t"<<infected_or_not[i]<<"\t"<<quarantined[i]<<"\t"<<quarantined_day[i]<<"\t0"<<endl;
             uninfected_count++;
         }
     }
-    // cout<<"Infected Count: "<<infected_count<<endl;
-    // cout<<"Quanrantined Count: "<<quarantined_count<<endl;
-    // cout<<"Uninfected count: "<<uninfected_count<<endl;
+    cout<<"Infected Count: "<<infected_count<<endl;
+    cout<<"Quanrantined Count: "<<quarantined_count<<endl;
+    cout<<"Uninfected count: "<<uninfected_count<<endl;
 }

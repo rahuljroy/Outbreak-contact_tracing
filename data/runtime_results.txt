@@ -1,0 +1,31 @@
+Graph read time for parallel code is,  4.388269e+01
+Time taken for parallel code for outbreak, excluding graph time,  is, 8.484884e+00
+Time taken for parallel code for outbreak, inckuding graph time,  is, 5.236758e+01
+
+Graph read time for parallel code is,  4.168916e+01
+Time taken for parallel code for outbreak, excluding graph time,  is, 5.943283e+00
+Time taken for parallel code for outbreak, inckuding graph time,  is, 4.763244e+01
+
+Graph read time for parallel code is,  4.326409e+01
+Time taken for parallel code for outbreak, excluding graph time,  is, 3.841997e+00
+Time taken for parallel code for outbreak, inckuding graph time,  is, 4.710608e+01
+
+Graph read time for parallel code is,  4.944164e+01
+Time taken for parallel code for outbreak, excluding graph time,  is, 3.685403e+00
+Time taken for parallel code for outbreak, inckuding graph time,  is, 5.312705e+01
+
+Graph read time for parallel code is,  6.901321e+01
+Time taken for parallel code for outbreak, excluding graph time,  is, 6.670521e+00
+Time taken for parallel code for outbreak, inckuding graph time,  is, 7.568373e+01
+
+Graph read time for parallel code is,  1.236923e+02
+Time taken for parallel code for outbreak, excluding graph time,  is, 1.919189e+01
+Time taken for parallel code for outbreak, inckuding graph time,  is, 1.428842e+02
+
+Graph read time for parallel code is,  2.748017e+02
+Time taken for parallel code for outbreak, excluding graph time,  is, 5.263296e+01
+Time taken for parallel code for outbreak, inckuding graph time,  is, 3.274346e+02
+
+Graph read time for sequential code is,  4.602314e+01
+Time taken for sequential code for outbreak, excluding graph time,  is, 1.423280e+01
+Time taken for sequential code for outbreak, inckuding graph time,  is, 6.025595e+01

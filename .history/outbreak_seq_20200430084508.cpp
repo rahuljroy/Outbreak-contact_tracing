@@ -151,7 +151,7 @@ int main(){
         quarantined_day[infected[i]] = 1;
     }
     
-    // cout<<"the number of infected people on day 1 is "<<infected.size()<<endl;
+    cout<<"the number of infected people on day 1 is "<<infected.size()<<endl;
     neighbours.resize(no_vertices);
     
     i=0;
@@ -184,7 +184,7 @@ int main(){
             }
         }
 
-        // cout<<"The number of infected people on day "<<i+2<<" is "<<current_infected.size()<<endl;
+        cout<<"The number of infected people on day "<<i+2<<" is "<<current_infected.size()<<endl;
         i++;
         infected = current_infected;
         current_infected.clear();
